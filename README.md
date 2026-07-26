@@ -59,3 +59,9 @@ Running the Client
 
 📜 Commands (Client Side)
     /exit, /quit, or /q — Safely disconnect from the chat room and terminate the client session.
+
+
+🚧 Upcoming Updates & Roadmap
+    [ ] Byte-Level Padding Fix: Transition from string formatting to byte-array padding to safely support multi-byte UTF-8 characters.
+    [ ] Enhanced Status Codes: Granular error handling (WRONG_PASS vs NOT_FOUND) during authentication.
+    [ ] TLS/SSL Encryption: Add secure socket wrapping for encrypted client-server traffic.
