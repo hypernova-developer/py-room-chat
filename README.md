@@ -28,7 +28,7 @@ py-room-chat/
     └── client.py
 ```
 
-🚀 Getting Started
+## 🚀 Getting Started
 Prerequisites
 
     Python 3.8 or higher installed on your machine.
