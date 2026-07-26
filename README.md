@@ -21,7 +21,6 @@ This project demonstrates low-level network programming, concurrent connection h
 
 ```text
 py-room-chat/
-├── .gitignore
 ├── README.md
 ├── LICENSE
 └── src/
