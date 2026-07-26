@@ -32,13 +32,13 @@ class Room:
     def add_member(self, nickname: str, conn=None):
         with lock:
             self.members[nickname] = conn
-        self.broadcast(f"{nickname}, odaya giriş yaptı.", sender_conn=None)
+        self.broadcast(f"{nickname} joined the room.", sender_conn=None)
 
     def remove_member(self, nickname: str, conn=None):
         with lock:
             if nickname in self.members:
                 del self.members[nickname]
-        self.broadcast(f"{nickname}, odadan çıkış yaptı.", sender_conn=None)
+        self.broadcast(f"{nickname} left the room.", sender_conn=None)
 
     def broadcast(self, message: str, sender_conn=None):
         data = message.encode('utf-8')
@@ -51,7 +51,7 @@ class Room:
                 except Exception:
                     pass
         date_and_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        with open(f"logs/oda_{self.id}.txt", "a", encoding="utf-8") as f:
+        with open(f"logs/room_{self.id}.txt", "a", encoding="utf-8") as f:
             f.write(f"[{date_and_time}] {sender_conn}: {message}\n")
 
 
@@ -83,12 +83,12 @@ def communication(nickname: str, conn: socket.socket, room: Room):
         try:
             data = conn.recv(BUFFER_SIZE)
             if not data:
-                log_write(f"{nickname} Kullanıcısının bağlantısı koptu.")
+                log_write(f"Connection lost for user: {nickname}")
                 with lock:
                     if nickname in connections:
                         del connections[nickname]
                 room.remove_member(nickname, conn)
-                log_write(f"{nickname} kişisi sohbetten ayrıldı.")
+                log_write(f"{nickname} left the chat.")
                 break
 
             print(data.decode('utf-8'))
@@ -117,7 +117,7 @@ def client_handler(connection: socket.socket, addr):
             data = connection.recv(BUFFER_SIZE)
             
             if data.decode('utf-8') == "CRT":
-                room_name = room_id + " Kişisinin odası"
+                room_name = f"{room_id}'s Room"
                 room = create_room(room_id, room_name, room_pass, {})
             else:
                 connection.close()
@@ -134,7 +134,7 @@ def client_handler(connection: socket.socket, addr):
         thread.start()
 
     except Exception as e:
-        print(f"Hata oluştu: {e}")
+        print(f"Error occurred: {e}")
         connection.close()
 
 
@@ -146,8 +146,8 @@ def main():
     server_socket.bind(('0.0.0.0', SERVER_PORT))
     server_socket.listen()
 
-    print("Server Başlatıldı")
-    print("Dinleme işlemi başlatıldı, istemci bekleniyor...")
+    print("Server Started")
+    print("Listening for incoming connections...")
 
     while True:
         connection, addr = server_socket.accept()
