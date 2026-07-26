@@ -50,7 +50,7 @@ Running the Client
     python src/client.py
     Follow the on-screen prompts to enter your nickname, room ID, and password.
 
-🔒 Protocol & Handshake Flow
+## 🔒 Protocol & Handshake Flow
     Authentication: Client sends a fixed 16-byte nickname to the server.
     Room Request: Client sends room ID (16 bytes) and password (16 bytes).
     Validation:
@@ -58,7 +58,7 @@ Running the Client
         If the room does not exist -> Server responds with NO. The client can choose to issue a create signal (CRT) to spin up a new room dynamically.
     Chat Loop: Once connected, messages are broadcasted to all other active members in the room in real time.
 
-📜 Commands (Client Side)
+## 📜 Commands (Client Side)
     /exit, /quit, or /q — Safely disconnect from the chat room and terminate the client session.
 
 
