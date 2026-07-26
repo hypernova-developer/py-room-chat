@@ -21,13 +21,14 @@ This project demonstrates low-level network programming, concurrent connection h
 
 ```text
 py-room-chat/
-├── .gitignore
 ├── README.md
+├── LICENSE
 └── src/
     ├── server.py
     └── client.py
+```
 
-🚀 Getting Started
+## 🚀 Getting Started
 Prerequisites
 
     Python 3.8 or higher installed on your machine.
@@ -49,7 +50,7 @@ Running the Client
     python src/client.py
     Follow the on-screen prompts to enter your nickname, room ID, and password.
 
-🔒 Protocol & Handshake Flow
+## 🔒 Protocol & Handshake Flow
     Authentication: Client sends a fixed 16-byte nickname to the server.
     Room Request: Client sends room ID (16 bytes) and password (16 bytes).
     Validation:
@@ -57,11 +58,14 @@ Running the Client
         If the room does not exist -> Server responds with NO. The client can choose to issue a create signal (CRT) to spin up a new room dynamically.
     Chat Loop: Once connected, messages are broadcasted to all other active members in the room in real time.
 
-📜 Commands (Client Side)
+## 📜 Commands (Client Side)
     /exit, /quit, or /q — Safely disconnect from the chat room and terminate the client session.
 
 
-🚧 Upcoming Updates & Roadmap
+## 🚧 Upcoming Updates & Roadmap
     [ ] Byte-Level Padding Fix: Transition from string formatting to byte-array padding to safely support multi-byte UTF-8 characters.
     [ ] Enhanced Status Codes: Granular error handling (WRONG_PASS vs NOT_FOUND) during authentication.
     [ ] TLS/SSL Encryption: Add secure socket wrapping for encrypted client-server traffic.
+
+## 🧾 Ownership
+This project is maintained by [lingitdev](https://github.com/lingitdev) and protected under [GPLPv3 Licence](./LICENSE).
