@@ -26,6 +26,7 @@ py-room-chat/
 └── src/
     ├── server.py
     └── client.py
+```
 
 🚀 Getting Started
 Prerequisites
