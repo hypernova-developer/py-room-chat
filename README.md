@@ -62,7 +62,10 @@ Running the Client
     /exit, /quit, or /q — Safely disconnect from the chat room and terminate the client session.
 
 
-🚧 Upcoming Updates & Roadmap
+## 🚧 Upcoming Updates & Roadmap
     [ ] Byte-Level Padding Fix: Transition from string formatting to byte-array padding to safely support multi-byte UTF-8 characters.
     [ ] Enhanced Status Codes: Granular error handling (WRONG_PASS vs NOT_FOUND) during authentication.
     [ ] TLS/SSL Encryption: Add secure socket wrapping for encrypted client-server traffic.
+
+## 🧾 Ownership
+This project is maintained by [lingitdev](https://github.com/lingitdev) and protected under [GPLPv3 Licence](./LICENSE).
