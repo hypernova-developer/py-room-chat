@@ -1,0 +1,16 @@
+# Project Generated Logs
+logs/
+NetworkChatLog.txt
+
+# Python Bytecode & Cache
+__pycache__/
+*.pyc
+
+# Environments
+.venv/
+venv/
+
+# Editor & OS Files
+.vscode/
+.idea/
+.DS_Store
